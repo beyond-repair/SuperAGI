@@ -4,6 +4,7 @@ import sys
 from sqlalchemy.orm import sessionmaker
 
 from superagi.helper.tool_helper import handle_tools_import
+from superagi.tools.github.review_pull_request import GithubReviewPullRequest
 from superagi.lib.logger import logger
 
 from datetime import timedelta
@@ -52,6 +53,8 @@ def execute_waiting_workflows():
 
     from superagi.jobs.agent_executor import AgentExecutor
     logger.info("Executing waiting workflows job")
+    if handle_github_actions_failure():
+        return
     AgentExecutor().execute_waiting_workflows()
 
 @app.task(name="initialize-schedule-agent", autoretry_for=(Exception,), retry_backoff=2, max_retries=5)
@@ -75,6 +78,10 @@ def execute_agent(agent_execution_id: int, time):
 @app.task(name="summarize_resource", autoretry_for=(Exception,), retry_backoff=2, max_retries=5,serializer='pickle')
 def summarize_resource(agent_id: int, resource_id: int):
     """Summarize a resource in background."""
+def handle_github_actions_failure():
+    """Handle the GitHub Actions run failure."""
+    review_pull_request = GithubReviewPullRequest()
+    review_pull_request.handle_github_actions_failure("GitHub Actions run failed", relevant_info)
     from superagi.resource_manager.resource_summary import ResourceSummarizer
     from superagi.types.storage_types import StorageType
     from superagi.models.resource import Resource
