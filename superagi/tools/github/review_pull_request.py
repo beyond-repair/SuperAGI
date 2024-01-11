@@ -31,6 +31,17 @@ class GithubReviewPullRequestSchema(BaseModel):
 
 
 class GithubReviewPullRequest(BaseTool):
+    def handle_github_actions_failure(self, error_message, relevant_info):
+        """
+        Handle the GitHub Actions run failure.
+
+        Args:
+            error_message: The error message.
+            relevant_info: Any relevant information.
+
+        Returns:
+            None
+        """
     """
     Reviews the github pull request and adds comments inline
 
