@@ -9,7 +9,7 @@
 
 # SuperAGI GitHub Tool
 
-The SuperAGI GitHub Tool enables users to perform various operations on GitHub repositories which include adding files or folders, deleting files, and searching for files or folders within a repository.
+The SuperAGI GitHub Tool enables users to perform various operations on GitHub repositories which include adding files or folders, deleting files, searching for files or folders within a repository, and reviewing and adding comments to pull requests.
 
 ## 💡 Features
 
@@ -58,5 +58,5 @@ Add the following configuration settings to the GitHub Toolkit Page:
 
 3. **Search for Files or Folders**
 
-   To search for files or folders within a GitHub repository, specify the repository, and owner's UserName and provide the name or path of the file/folder you're looking for in your goal. SuperAGI will provide you with the search results. By default, it'll pick the main branch, if you want to search in any other branch you have to mention it in the goal.
+   To review and add comments to pull requests on GitHub repositories, use the GithubReviewPullRequest tool. You can provide feedback, comment on, and review pull requests using this tool.
  

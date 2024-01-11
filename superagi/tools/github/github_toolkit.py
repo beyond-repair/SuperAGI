@@ -5,7 +5,7 @@ from superagi.tools.github.add_file import GithubAddFileTool
 from superagi.tools.github.delete_file import GithubDeleteFileTool
 from superagi.tools.github.fetch_pull_request import GithubFetchPullRequest
 from superagi.tools.github.search_repo import GithubRepoSearchTool
-from superagi.tools.github.review_pull_request import GithubReviewPullRequest
+from superagi.tools.github.review_pull_request import GithubReviewPullRequest, GithubFetchPullRequest
 from superagi.types.key_type import ToolConfigKeyType
 
 
